@@ -15,16 +15,16 @@ signature: orod
   const filed = {
     parser: 'https://github.com/orod/support-kb-4471/issues/1',
     hint: 'https://github.com/orod/support-kb-4471/issues/2',
-    shift: 'https://github.com/orod/support-kb-4471/issues/3',
   };
+  const shiftTicket = 'https://github.com/orod/support-kb-4471/issues/3';
 </script>
 
 [#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. Read by cause instead of by
 subject line, its reports are three problems. The parser fix that is queued closes only the first.
 
 <Callout kind="warn">
-Not one issue. Each problem below has its own ticket, and each count is computed from the
-reports merged into #4471 when this page renders.
+Not one issue. Each problem below has its own ticket. The table is the desk's view of #4471,
+computed from its reports when this page renders.
 </Callout>
 
 ## What #4471 holds
@@ -42,10 +42,11 @@ but the form reads the date the tenant's way, day first. People type what the hi
 date is stored swapped. The parser fix does not touch this: only form bookings on booking-v3 hit
 it, and the hint has to change.
 
-**`shift`: dates land one day off.** Not swapped: "Client in Lisbon got Tuesday. Client in
-Toronto got Monday." That points at time zones, not at date order. The desk had these in its
-one-day-move notes, but the kb filed them under `parser` by tenant, so the table showed two causes.
-One reporter says they have stopped reporting these, so the count is a floor.
+**One-day moves: dates land one day off** ([its own ticket]({shiftTicket})). Not swapped:
+"Client in Lisbon got Tuesday. Client in Toronto got Monday." That points at time zones, not at
+date order. The desk has these in its one-day-move notes, and the view files them under `parser`
+by tenant: they are the footnote under the table, counted inside the `parser` row. The parser fix
+will not close them. One reporter says they have stopped reporting these, so the count is a floor.
 
 ## Why one ticket hid them
 
