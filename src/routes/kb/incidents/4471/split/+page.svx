@@ -19,8 +19,10 @@ signature: orod
   const shiftTicket = 'https://github.com/orod/support-kb-4471/issues/3';
 </script>
 
-[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. Read by cause instead of by
-subject line, its reports are three problems. The parser fix that is queued closes only the first.
+[#4471](/kb/incidents/4471) was marked known: one issue, one fix. Read by cause instead of by
+subject line, its reports are three problems. Engineering closed #4471 on 5 October: `parser` is
+fixed (`fix(dates): parse dd/mm for eu locales`), `hint` is won't fix because booking-v3's form is
+retired. The one-day moves are fixed by neither, and stay open.
 
 <Callout kind="warn">
 Not one issue. Each problem below has its own ticket. The table is the desk's view of #4471,
@@ -35,12 +37,12 @@ computed from its reports when this page renders.
 
 **`parser`: the parser reads dates month first.** Every tenant in #4471 writes the day first, so
 day and month come out swapped: "Our 7 April reminder went out on 4 July." This is the bug #4471
-names, and the queued fix is for it.
+names. Fixed on 5 October.
 
 **`hint`: booking-v3's form tells people to type month first.** Its date field says `MM/DD/YYYY`,
 but the form reads the date the tenant's way, day first. People type what the hint says, and the
 date is stored swapped. The parser fix does not touch this: only form bookings on booking-v3 hit
-it, and the hint has to change.
+it. Won't fix: the booking-v3 form is retired, and its hint with it.
 
 **One-day moves: dates land one day off** ([its own ticket]({shiftTicket})). Not swapped:
 "Client in Lisbon got Tuesday. Client in Toronto got Monday." That points at time zones, not at
@@ -58,7 +60,7 @@ will not close them. One reporter says they have stopped reporting these, so the
 
 ## For the desk
 
-Reopen #4471 as the `parser` problem only, and follow the other two on their own tickets. When
+#4471 is closed, but the one-day moves are not: follow them on [their ticket]({shiftTicket}). When
 a report is about a date, check the tenant's booking form and whether the date is swapped or one
 day off before you merge it.
 
